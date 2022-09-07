@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
@@ -63,12 +64,18 @@ export default class Search extends Component {
           </form>
         )}
         { apiResponse && <p>{`Resultado de álbuns de: ${savedArtist}`}</p> }
-        {albumsList.length > 1 && apiResponse === true ? (
+        {albumsList.length > 1 ? (
           albumsList.map((album) => (
             <section key={ album.collectionId }>
               <img src={ album.artworkUrl100 } alt="album" />
               <p>{ album.collectionName }</p>
               <p>{ album.artistName }</p>
+              <Link
+                data-testid={ `link-to-album-${album.collectionId}` }
+                to={ `/album/${album.collectionId}` }
+              >
+                Acessar álbum
+              </Link>
             </section>
           ))
         ) : <p>Nenhum álbum foi encontrado</p> }
