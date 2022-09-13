@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 export default class MusicCard extends Component {
@@ -22,6 +22,7 @@ export default class MusicCard extends Component {
       loading: false,
       favoriteChecked: true,
     });
+    await getFavoriteSongs();
   };
 
   render() {
