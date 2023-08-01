@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
+import './Login.css';
 
 export default class Login extends Component {
   constructor() {
@@ -35,8 +36,9 @@ export default class Login extends Component {
     const { inputLogin, loading, redirecting } = this.state;
     const minLoginLength = 3;
     return (
-      <div data-testid="page-login">
+      <div className="Login" data-testid="page-login">
         <input
+          className="form__input"
           type="text"
           data-testid="login-name-input"
           placeholder="Nome"
